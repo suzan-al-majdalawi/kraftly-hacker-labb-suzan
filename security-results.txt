@@ -1,0 +1,18 @@
+=== Kraftly Security Test ===
+Datum: 10/15/2026 00:00:58
+Login: lyckades
+
+=== Profiltest ===
+HTTP/1.1 200 OK X-Powered-By: Express Access-Control-Allow-Origin: * Access-Control-Allow-Credentials: true Access-Control-Allow-Headers: Content-Type, Authorization Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS Content-Type: application/json; charset=utf-8 Content-Length: 178 ETag: W/"b2-jFSncKyS65kwS815khbp95F04dc" Date: Wed, 14 Oct 2026 22:00:58 GMT Connection: keep-alive Keep-Alive: timeout=5  {"id":1,"name":"Anna Andersson","email":"anna.andersson@example.com","address":"Solv├ñgen 12, 802 67 G├ñvle","contract":"R├Ârligt pris","customerNo":"K-104233","role":"customer"}
+
+=== IDOR-test ===
+HTTP/1.1 200 OK X-Powered-By: Express Access-Control-Allow-Origin: * Access-Control-Allow-Credentials: true Access-Control-Allow-Headers: Content-Type, Authorization Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS Content-Type: application/json; charset=utf-8 Content-Length: 181 ETag: W/"b5-6Y6gfAPQPx/Utgx3U2Vk8cHfFMQ" Date: Wed, 14 Oct 2026 22:00:58 GMT Connection: keep-alive Keep-Alive: timeout=5  [{"id":"F-2026-06","period":"Juni 2026","amount":289,"status":"Obetald","due":"2026-07-31"},{"id":"F-2026-05","period":"Maj 2026","amount":301,"status":"Betald","due":"2026-06-30"}]
+
+=== Mass assignment-test ===
+HTTP/1.1 200 OK X-Powered-By: Express Access-Control-Allow-Origin: * Access-Control-Allow-Credentials: true Access-Control-Allow-Headers: Content-Type, Authorization Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS Content-Type: application/json; charset=utf-8 Content-Length: 177 ETag: W/"b1-PRlW8VeQRoXZB7yRyFLAinQHFYE" Date: Wed, 14 Oct 2026 22:00:58 GMT Connection: keep-alive Keep-Alive: timeout=5  {"id":1,"name":"Anna Andersson","email":"anna.andersson@example.com","address":"Solv├ñgen 12, 802 67 G├ñvle","contract":"R├Ârligt pris","customerNo":"K-104233","role":"support"}
+
+=== Admin-åtkomsttest ===
+HTTP/1.1 200 OK X-Powered-By: Express Access-Control-Allow-Origin: * Access-Control-Allow-Credentials: true Access-Control-Allow-Headers: Content-Type, Authorization Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS Content-Type: application/json; charset=utf-8 Content-Length: 520 ETag: W/"208-RnTFKzV8OxQBgNEThiLRfLMiOOE" Date: Wed, 14 Oct 2026 22:00:58 GMT Connection: keep-alive Keep-Alive: timeout=5  [{"id":1,"name":"Anna Andersson","email":"anna.andersson@example.com","address":"Solv├ñgen 12, 802 67 G├ñvle","contract":"R├Ârligt pris","customerNo":"K-104233","role":"support"},{"id":2,"name":"Bo Bergstr├Âm","email":"bo.bergstrom@example.com","address":"Kvarnbacken 4, 621 45 Visby","contract":"Fast pris 1 ├Ñr","customerNo":"K-208811","role":"customer"},{"id":3,"name":"Kundservice","email":"support@kraftly.se","address":"Kraftly AB, Box 1, 111 22 Stockholm","contract":"-","customerNo":"K-000001","role":"support"}]
+
+=== CORS-test ===
+HTTP/1.1 200 OK X-Powered-By: Express Access-Control-Allow-Origin: http://127.0.0.1:6666 Access-Control-Allow-Credentials: true Access-Control-Allow-Headers: Content-Type, Authorization Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS Content-Type: text/html; charset=utf-8 Content-Length: 2 ETag: W/"2-eoX0dku9ba8cNUXvu/DyeabcC+s" Date: Wed, 14 Oct 2026 22:00:58 GMT Connection: keep-alive Keep-Alive: timeout=5  ok
