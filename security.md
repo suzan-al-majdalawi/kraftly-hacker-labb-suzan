@@ -64,3 +64,16 @@ Svaret innehöll fakturor för kundnummer `K-208811`. Bekräfta att samma `$toke
 **Bevis:** I `mock-api/server.js` lagras lösenorden direkt i `users`-listan. `/api/login` svarar med olika felmeddelanden för okänd e-postadress respektive fel lösenord.
 
 **Fix:** Lagra lösenord med Argon2id eller bcrypt, inför hastighetsbegränsning och använd ett enhetligt felmeddelande vid misslyckad inloggning.
+_________________________________________________________________________________________________________________
+### Regressionstest – IDOR
+
+**Test:** `mock-api/idor.test.js`
+
+**Före fix:** Testet misslyckades eftersom Anna kunde få Bos fakturor genom att ändra `customerNo`.
+
+**Fix:** API:t använder nu `req.user.customerNo` i stället för kundnumret från frågeparametern.
+
+**Efter fix:** Testet passerar och verifierar att Anna får sina fyra fakturor även när begäran innehåller Bos kundnummer.
+
+**Kör testet:** `node --test mock-api/idor.test.js`
+___________________________________________________________________________________________________________________

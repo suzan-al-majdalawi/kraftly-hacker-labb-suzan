@@ -109,7 +109,7 @@ app.get('/api/consumption', (req, res) => setTimeout(() => res.json(consumption)
 
 // ?customerNo= so support can look at a customer's invoices from the same page /J
 app.get('/api/invoices', (req, res) => {
-  const customerNo = req.query.customerNo || req.user.customerNo
+  const customerNo = req.user.customerNo
   res.json(invoices[customerNo] || [])
 })
 
